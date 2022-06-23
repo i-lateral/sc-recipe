@@ -7,7 +7,7 @@
     "require": {
         "php": "^7.4 || ^8.0",
         "silverstripe/recipe-plugin": "^1",
-        "silverstripe/recipe-core": "^1",
+        "silverstripe/recipe-core": "^4.2",
         "silverstripe/recipe-blog": "^1",
         "silverstripe/recipe-form-building": "^1",
         "silvercommerce/silvercommerce-recipe": "^1",
