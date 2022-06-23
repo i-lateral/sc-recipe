@@ -1,2 +1,4 @@
-# sc-recipie
-Customised recipie for silvercommerce
+# sc-recipe
+
+Custom SilverCommerce recipie with additional modules installed
+by default
