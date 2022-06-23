@@ -1,30 +1,42 @@
 {
     "name": "i-lateral/sc-recipe",
     "type": "silverstripe-recipe",
-    "description": "SilverStripe recipe for fully featured page and asset content editing",
+    "description": "Customised version of SilverCommerce install",
     "homepage": "http://silverstripe.org",
     "license": "BSD-3-Clause",
     "require": {
-        "silvercommerce/silvercommerce-recipe": "1.*@dev",
-        "silverstripe/blog": "^3.2",
-        "silverstripe/userforms": "5.*",
-        "silverstripe/widgets": "^2.0",
+        "php": "^7.4 || ^8.0",
+        "silverstripe/recipe-plugin": "^1",
+        "silverstripe/recipe-blog": "^1",
+        "silverstripe/recipe-form-building": "^1",
+        "silvercommerce/silvercommerce-recipe": "^1",
+
+        "silvercommerce/stock": "^1.0",
+        "silvercommerce/customisable-products": "^1.1",
+        "silvercommerce/checkout-agree-to-terms": "^1.0",
+        "silvercommerce/checkout-special-instructions": "^1.0",
+        "silvercommerce/downloadable-products": "^1.0",
+
+        "i-lateral/silverstripe-carousel": "^2.1",
+        "i-lateral/silverstripe-childhubpage": "^2.0",
+        "i-lateral/silverstripe-custommenus": "^2.0",
+        "i-lateral/silverstripe-deferedimages": "^1.1",
+        "i-lateral/silverstripe-gallery": "^2.0",
+        "i-lateral/silverstripe-socialnav": "^2.0",
+        "i-lateral/silverstripe-systemmessages": "^2.0",
+
         "wilr/silverstripe-googlesitemaps": "^2.1",
         "hubertusanton/silverstripe-seo": "^4.0",
         "axllent/silverstripe-scaled-uploads": "^2.1",
-        "i-lateral/silverstripe-childhubpage": "^2.0",
-        "jonom/focuspoint": "^3.0",
-        "i-lateral/silverstripe-custommenus": "^2.0",
-        "i-lateral/silverstripe-gallery": "^2.0",
-        "i-lateral/silverstripe-socialnav": "^2.0",
-        "fractas/cookiepolicy": "^2.0",
+        "jonom/focuspoint": "^3.1",
+        "fractas/cookiepolicy": "^2.1",
+        "tractorcow/silverstripe-robots": "^4.0",
         "heyday/silverstripe-gridfieldversionedorderablerows": "ss4-upgrade-dev",
         "undefinedoffset/silverstripe-nocaptcha": "^2.0"
     },
     "require-dev": {
-        "phpunit/phpunit": "^5.7",
         "deployer/deployer": "^6.2",
-        "omnipay/dummy": "^2.0"
+        "omnipay/dummy": "^3.0"
     },
     "extra": {
         "project-files": [
