@@ -5,22 +5,30 @@ use Deployer\Task\Context;
 
 require 'recipe/silverstripe.php';
 
-// Project name
+// Project Info
+set('org', '__OrgName__');
 set('application', '__ApplicationName__');
 
 // Historic releases
-set('keep_releases', 5);
+set('keep_releases', 3);
 
 // Project repository
-set('repository', 'git@bitbucket.org:ilateral/{{application}}.git');
-set('branch', 'dev');
+set('repository', 'git@bitbucket.org:{{org}}/{{application}}.git');
+
+// Deployment Info
 set('default_stage', 'dev');
+set('branch_dev', 'dev');
+set('branch_live', 'master');
+set('deploy_live_user', '__LiveUserName_');
+set('deploy_dev_user', '__DevUserName_');
+set('ssh_port_dev', 22);
+set('ssh_port_live', 22);
 
 // Silverstripe shared dirs
 set(
     'shared_dirs',
     [
-        'assets',
+        'public/assets',
         'silverstripe-cache'
     ]
 );
@@ -30,9 +38,8 @@ set(
     'writable_dirs',
     [
         'themes',
-        'assets',
-        'silverstripe-cache',
-        'logs'
+        'public/assets',
+        'silverstripe-cache'
     ]
 );
 
@@ -40,27 +47,26 @@ set(
 set(
     'shared_files',
     [
-        '.env',
-        'logs/silverstripe.log',
-        'logs/omnipay.log',
+        '.env'
     ]
 );
 
 // Setup dev server deployment
 host('__DevServer__')
     ->stage('dev')
-    ->user('root')
-    ->set('deploy_path', '/srv/{{application}}')
-    ->set('http_user', 'apache')
+    ->port(get('ssh_port_dev'))
+    ->stage(get('branch_dev'))
+    ->user(get('deploy_dev_user'))    
+    ->set('deploy_path', '/path/to/{{application}}')
     ->identityFile('~/.ssh/id_rsa');
 
 // Setup live server deployment
 host('__LiveServer__')
-    ->port(2020)
     ->stage('live')
-    ->set('branch', 'master')
-    ->user('yous')
-    ->set('deploy_path', '/home/monu/webroot')
+    ->port(get('ssh_port_live'))
+    ->stage(get('branch_live'))
+    ->user(get('deploy_live_user'))
+    ->set('deploy_path', '/path/to/{{application}}')
     ->identityFile('~/.ssh/id_rsa');
 
 // Disable composer --no-dev on dev
@@ -84,13 +90,23 @@ before('deploy:vendors', 'composer:config');
 task(
     'reload:php-fpm',
     function () {
-        run('sudo /bin/systemctl restart php-fpm.service');
+        run('sudo /bin/systemctl restart php74-fpm.service');
+    }
+);
+
+// Purge Cache
+task(
+    'silverstripe:purge-cache',
+    function () {
+        run('rm -fR ~/{{application}}/shared/silverstripe-cache/*');
     }
 );
 
 after('deploy', 'reload:php-fpm');
+after('deploy', 'silverstripe:purge-cache');
 
 // Tasks
+// Thanks to @kinglozzer / BigFork for this!
 desc('Populate .env file');
 task(
     'silverstripe:create_dotenv',
