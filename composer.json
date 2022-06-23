@@ -7,6 +7,7 @@
     "require": {
         "php": "^7.4 || ^8.0",
         "silverstripe/recipe-plugin": "^1",
+        "silverstripe/recipe-core": "^1",
         "silverstripe/recipe-blog": "^1",
         "silverstripe/recipe-form-building": "^1",
         "silvercommerce/silvercommerce-recipe": "^1",
@@ -43,11 +44,19 @@
             ".vscode/*",
             ".gitignore",
             ".htaccess",
-            "app/*",
+            "app/_config/*",
+            "app/lang/*",
+            "app/src/*",
             "themes/custom/*",
             "index.php",
             "web.config"
-        ]
+        ],
+        "public-files": [
+            ".htaccess",
+            "web.config",
+            "index.php"
+        ],
+        "resources-dir": "_resources"
     },
     "config": {
         "process-timeout": 600
