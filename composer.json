@@ -30,6 +30,7 @@
         "hubertusanton/silverstripe-seo": "^4.0",
         "axllent/silverstripe-scaled-uploads": "^2.1",
         "jonom/focuspoint": "^3.1",
+        "jonom/silverstripe-betternavigator": "^5.4",
         "fractas/cookiepolicy": "^2.1",
         "tractorcow/silverstripe-robots": "^4.0",
         "heyday/silverstripe-gridfieldversionedorderablerows": "ss4-upgrade-dev",
