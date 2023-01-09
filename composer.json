@@ -57,6 +57,12 @@
             "web.config",
             "index.php"
         ],
+        "expose": [
+            "themes/custom/css",
+            "themes/custom/javascript",
+            "themes/custom/fonts",
+            "themes/custom/images"
+        ],
         "resources-dir": "_resources"
     },
     "config": {
