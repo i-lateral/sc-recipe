@@ -1,13 +1,16 @@
 <?php
 
-use SilverStripe\Forms\TreeDropdownField;
+namespace App\Extensions;
+
+use ContactPage;
+use SilverStripe\Assets\Image;
 use SilverStripe\Forms\FieldList;
 use SilverStripe\ORM\DataExtension;
-use SilverStripe\Assets\Image;
-use SilverStripe\AssetAdmin\Forms\UploadField;
 use SilverStripe\Forms\CheckboxField;
+use SilverStripe\AssetAdmin\Forms\UploadField;
+use SilverStripe\Forms\DropdownField;
 
-class AppSiteConfig extends DataExtension
+class SiteConfigExtension extends DataExtension
 {
     private static $db = [
         'TileBackground' => 'Boolean'
@@ -18,6 +21,12 @@ class AppSiteConfig extends DataExtension
         'Icon' => Image::class,
         'Background' => Image::class,
         'ContactPage' => ContactPage::class
+    ];
+
+    private static $owns = [
+        'Logo',
+        'Icon',
+        'Background'
     ];
 
     public function updateCMSFields(FieldList $fields)
@@ -33,26 +42,22 @@ class AppSiteConfig extends DataExtension
                     "Icon",
                     "Site Icon"
                 )->setRightTitle('Used for favicon and touch icons - this must be a .png or .gif')
-                ->setAllowedExtensions(['png', 'gif'])
-            ],
-            'Tagline'
-        );
-
-        $fields->addFieldsToTab(
-            'Root.Main',
-            [
-
+                ->setAllowedExtensions(['png', 'gif']),
                 UploadField::create(
                     "Background",
                     "Site Background"
                 ),
                 CheckboxField::create("TileBackground"),
-                TreeDropdownField::create(
-                    "ContactPageID",
-                    "Link to 'contact' page",
-                    'ContactPage'
-                )
-            ]
+            ],
+            'Tagline'
+        );
+
+        $fields->addFieldToTab(
+            'Root.Main',
+            DropdownField::create(
+                "ContactPageID",
+                "Link to 'contact' page"
+            )->setSource(ContactPage::get()->map())
         );
     }
 }
