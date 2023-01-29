@@ -1,0 +1,9 @@
+---
+Name: apptheme
+---
+SilverStripe\View\SSViewer:
+  themes:
+    - 'custom'
+    - 'deferedimages'
+    - 'silvercommerce'
+    - '$default'
