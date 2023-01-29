@@ -1,6 +1,8 @@
 ---
 Name: appconfig
 ---
+SilverStripe\i18n\i18n:
+  default_locale: 'en_GB'
 
 Axllent\ScaledUploads\ScaledUploads:
   max_width: 1920
