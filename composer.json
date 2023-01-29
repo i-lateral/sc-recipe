@@ -25,6 +25,7 @@
         "i-lateral/silverstripe-gallery": "^2.0",
         "i-lateral/silverstripe-socialnav": "^2.0",
         "i-lateral/silverstripe-systemmessages": "^2.0",
+        "i-lateral/silverstripe-featuredimage": "^1.0",
 
         "wilr/silverstripe-googlesitemaps": "^2.1",
         "hubertusanton/silverstripe-seo": "^4.0",
