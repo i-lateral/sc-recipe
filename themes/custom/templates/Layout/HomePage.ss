@@ -8,12 +8,9 @@
     </div>
 
     <% if $FeaturedProducts.Exists %>
-        <h2 class="text-center">
-            <%t CatalogueFrontEnd.FeaturedProducts "Featured Products" %>
-        </h2>
         <div class="row mt-4">
             <% loop $FeaturedProducts.Sort('HomeSort', 'ASC') %>
-                <div class="col-sm-4 col-lg-3 mb-4">
+                <div class="col-12">
                     <% include ProductSummary %>
                 </div>
             <% end_loop %>
