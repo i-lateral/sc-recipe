@@ -1,0 +1,8 @@
+---
+Name: appsearch
+---
+ilateral\SilverStripe\Searchable\Searchable:
+  objects:
+    "Page": ["Title","MenuTitle","Content","URLSegment"]
+    "Product": ["Title","Content","URLSegment"]
+    "Category": ["Title","Content","URLSegment"]

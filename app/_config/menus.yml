@@ -1,0 +1,7 @@
+---
+Name: appmenus
+---
+ilateral\SilverStripe\CustomMenus\Model\CustomMenuLink:
+  base_classes:
+    "Category": "A Product Category"
+    "Product": "A Product"

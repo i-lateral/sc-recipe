@@ -1,7 +1,0 @@
----
-Name: appextensions
----
-
-SilverStripe\SiteConfig\SiteConfig:
-  extensions:
-    - App\Extensions\SiteConfigExtension
