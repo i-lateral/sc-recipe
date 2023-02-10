@@ -1,0 +1,20 @@
+---
+Name: appconfig
+---
+SilverStripe\Core\Manifest\ModuleManifest:
+  project: app
+
+Axllent\ScaledUploads\ScaledUploads:
+  max_width: 1920
+  max_height: 1920
+
+SilverStripe\Core\Injector\Injector:
+  Intervention\Image\ImageManager:
+    constructor:
+      - { driver: imagick }
+
+SilverStripe\SpamProtection\Extension\FormSpamProtectionExtension:
+  default_spam_protector: UndefinedOffset\NoCaptcha\Forms\NocaptchaProtector
+
+SilverStripe\i18n\i18n:
+  default_locale: 'en_GB'
