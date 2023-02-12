@@ -3,6 +3,7 @@ const Path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const ESLintPlugin = require('eslint-webpack-plugin');
 const PATHS = {
+  SC: Path.resolve('../silvercommerce/src'),
   MODULES: Path.resolve('node_modules'),
   ROOT: Path.resolve(),
   SRC: Path.resolve('src'),
@@ -17,7 +18,9 @@ module.exports = {
             `${PATHS.MODULES}/tether/dist/js/tether.js`,
             `${PATHS.MODULES}/bootstrap/dist/js/bootstrap.js`,
             `${PATHS.MODULES}/imagesloaded/imagesloaded.pkgd.js`,
+            `${PATHS.MODULES}/jquery-zoom/jquery.zoom.js`,
             `${PATHS.MODULES}/@fortawesome/fontawesome-free/js/all.js`,
+            `${PATHS.SC}/javascript/script.js`,
             `${PATHS.SRC}/javascript/jquery.cookie.policy.js`,
             `${PATHS.SRC}/javascript/script.js`
         ],
@@ -36,6 +39,13 @@ module.exports = {
     target: ['web', 'es5'],
     module: {
         rules: [
+            {
+                test: require.resolve("jquery"),
+                loader: "expose-loader",
+                options: {
+                  exposes: ["$", "jQuery"],
+                },
+            },
             {
                 test: /\.(sa|sc|c)ss$/,
                 use: [
@@ -73,11 +83,9 @@ module.exports = {
         ),
         new ESLintPlugin({
             files: ['src/javascript/*.js'],
-        }),
-        new Webpack.ProvidePlugin({
-            $: 'jquery',
-            jQuery: 'jquery',
-            'window.jQuery': 'jquery'
         })
-    ]
+    ],
+    externals: {
+        jquery: 'jQuery'
+    }
 };
