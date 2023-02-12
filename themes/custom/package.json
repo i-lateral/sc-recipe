@@ -1,9 +1,9 @@
 {
-  "name": "silvercommerce",
+  "name": "sc-custom-theme",
   "version": "1.0.0",
-  "description": "SilverStripe Theme for SilverCommerce using Bootstrap 4",
+  "description": "Customised version of SilverCommerce theme",
   "devDependencies": {
-    "@fortawesome/fontawesome-free": "^5.10.2",
+    "@fortawesome/fontawesome-free": "^5.12.1",
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.3",
     "babel-loader": "^8.0.6",
@@ -17,8 +17,10 @@
     "eslint-import-resolver-webpack": "^0.13.2",
     "eslint-plugin-import": "^2.25.3",
     "eslint-webpack-plugin": "^3.1.1",
+    "expose-loader": "^4.0.0",
     "imagesloaded": "^5.0.0",
-    "jquery": ">=3.5.0",
+    "jquery": "^3.5.0",
+    "jquery-zoom": "^1.7.20",
     "mini-css-extract-plugin": "^2.6.1",
     "node-sass": "^7.0.0",
     "popper.js": "^1.15.0",
@@ -45,5 +47,13 @@
     "lint:scripts": "eslint src/javascript/**/*.js",
     "lint:scripts:fix": "eslint src/javascript/**/*.js --fix"
   },
-  "license": "BSD 3-Clause"
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/silvercommerce/silvercommerce-theme.git"
+  },
+  "license": "BSD 3-Clause",
+  "bugs": {
+    "url": "https://github.com/silvercommerce/silvercommerce-theme/issues"
+  },
+  "homepage": "https://github.com/silvercommerce/silvercommerce-theme"
 }
